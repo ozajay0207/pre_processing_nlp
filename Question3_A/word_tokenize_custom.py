@@ -114,16 +114,16 @@ def custom_word_tokenize(para):
 			words.remove(i)
 	'''
 	
-	words1 = remove_doubles('(',')',words)
-	words1 = remove_doubles('{','}',words1)
-	words1 = remove_doubles('[',']',words1)	
-	words1 = remove_punctuations(words1)			
+	#words1 = remove_doubles('(',')',words)
+	#words1 = remove_doubles('{','}',words1)
+	#words1 = remove_doubles('[',']',words1)	
+	#words1 = remove_punctuations(words1)			
 
 	print("writing to file")
-	for i in words1:
+	for i in words:
 		file1.write(i)
 		file1.write('\n')
-	return words1
+	return words
 
 ############################################### QUESTION 2 PROGRAM ###########################################
 
