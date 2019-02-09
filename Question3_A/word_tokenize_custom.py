@@ -50,7 +50,7 @@ def remove_doubles(delimeter1,delimeter2,words):
 						
 	return words1
 
-def remove_punctuations(words1):
+def remove_punctuation(words1):
 	print("Processing Punctuations")
 	flag=0
 	words2=[]
@@ -58,18 +58,34 @@ def remove_punctuations(words1):
 		if(i!=''):
 			index=i.find('.')
 			if(index!=-1):
-				flag=1
-				words2.append(i[0:index])
-				words2.append(i[index:index+1])
-				if(index+1 != len(i)):
-					words2.append(i[index+1:])
+				if(i[index-1].isdigit() and i[index+1].isdigit()):
+					flag=0
+				else:
+					flag=1
+					words2.append(i[0:index])
+					words2.append(i[index:index+1])
+					if(index+1 != len(i)):
+						words2.append(i[index+1:])
 			index=i.find(',')
 			if(flag==0 and index!=-1):
-				flag=1
-				words2.append(i[0:index])
-				words2.append(i[index:index+1])
-				if(index+1 != len(i)):
-					words2.append(i[index+1:])
+				temp=""
+				if(i[index-1].isdigit()):
+					if(index+1 != len(i)):
+						if(i[index+1].isdigit()):
+							flag=1							
+							words2.append(i)
+					else:
+						flag=1
+						words2.append(i[0:index])
+						words2.append(i[index:index+1])
+						if(index+1 != len(i)):
+							words2.append(i[index+1:])
+				else:
+					flag=1
+					words2.append(i[0:index])
+					words2.append(i[index:index+1])
+					if(index+1 != len(i)):
+						words2.append(i[index+1:])			
 			index=i.find('?')
 			if(flag==0 and index!=-1):
 				flag=1
@@ -83,21 +99,8 @@ def remove_punctuations(words1):
 				words2.append(i[0:index])
 				words2.append(i[index:index+1])
 				if(index+1 != len(i)):
-					words2.append(i[index+1:])
-			index=i.find('%')
-			if(flag==0 and index!=-1):
-				flag=1
-				words2.append(i[0:index])
-				words2.append(i[index:index+1])
-				if(index+1 != len(i)):
-					words2.append(i[index+1:])
-			index=i.find('-')
-			if(flag==0 and index!=-1):
-				flag=1
-				words2.append(i[0:index])
-				words2.append(i[index:index+1])
-				if(index+1 != len(i)):
-					words2.append(i[index+1:])
+					words2.append(i[index+1:])			
+			
 			if(flag==0):
 				words2.append(i)
 			flag=0
@@ -108,22 +111,24 @@ def custom_word_tokenize(para):
 
 	file1 = open('word_tokenize.txt',"w")
 
-	print("here")
+
 	'''for i in words:
 		if(i == ''):
 			words.remove(i)
 	'''
 	
-	#words1 = remove_doubles('(',')',words)
-	#words1 = remove_doubles('{','}',words1)
-	#words1 = remove_doubles('[',']',words1)	
-	#words1 = remove_punctuations(words1)			
+	words1 = remove_doubles('(',')',words)
+	words1 = remove_doubles('{','}',words1)
+	words1 = remove_doubles('[',']',words1)	
+	print("here")
+	words1 = remove_punctuation(words1)		
+		
 
 	print("writing to file")
-	for i in words:
+	for i in words1:
 		file1.write(i)
 		file1.write('\n')
-	return words
+	return words1
 
 ############################################### QUESTION 2 PROGRAM ###########################################
 
@@ -212,7 +217,7 @@ def remove_punctuations(l):
 
 if __name__ == "__main__":
 	#files = ["demo1.txt"]
-	files = ["xaa","xab","xac","xad"]
+	files = ["demo2.txt"]
 	for f in files:
 		print("\n\n*********************************************************************************")
 		print("Using Corpus:",f)
@@ -227,7 +232,6 @@ if __name__ == "__main__":
 
 		word_tokenized_list=[]
 		word_tokenized_list=custom_word_tokenize(para)
-		
 
 
 		print("Removing Stop Words...")		

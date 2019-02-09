@@ -76,6 +76,10 @@ def coverage(l):
 
 	ngram_coverage(l,3,0.7)
 
+def to_lower_case(l):
+	l1 = [i.lower() for i in l]
+	return l1
+
 def remove_stop_words(l):
 	stop_words = set(stopwords.words('english'))
 	l1=[]
@@ -90,25 +94,45 @@ def remove_punctuations(l):
 
 if __name__ == "__main__":
 
-
 	#files = ["demo1.txt"]
 	files = ["xaa","xab","xac","xad"]
 	for f in files:
 		print("\n\n*********************************************************************************")
 		print("Using Corpus:",f)
-		file = open(f, "r")
-
+		file = open(f, "r")		
 
 
 		print("Tokenizing...")
 		#word_tokenized_list = word_tokenize(word_text)
 		word_tokenized_list = word_tokenize(file.read())		
 
+		print("Converting to lower case...")
+		word_tokenized_list = to_lower_case(word_tokenized_list)
+
+		filtered_file="lower_case_"
+		filtered_file=filtered_file+str(f)
+		filtered_file=filtered_file+".txt"
+		f1=open(filtered_file,"w")
+		for i in word_tokenized_list:
+			f1.write(i)
+			f1.write("\n")
 
 		print("Removing Stop Words...")		
 		word_tokenized_list = remove_stop_words(word_tokenized_list)
 		print("Removing Punctuations...")		
 		word_tokenized_list = remove_punctuations(word_tokenized_list)
+
+
+		
+		#WRITING FILTERED TOKENS TO FILE		
+		filtered_file="filtered_file_"
+		filtered_file=filtered_file+str(f)
+		filtered_file=filtered_file+".txt"
+		f1=open(filtered_file,"w")
+		for i in word_tokenized_list:
+			f1.write(i)
+			f1.write("\n")
+		
 
 		print("Calculating Coverage:")
 		coverage(word_tokenized_list)
@@ -125,6 +149,17 @@ if __name__ == "__main__":
 		#PERFORMING LEMMATIZATION
 		for i in word_tokenized_list:
 			lem_list.append(lem.lemmatize(i))		
+
+		
+		#WRITING LEMMATIZED TOKENS TO FILE		
+		filtered_file="lemmatized_file_"
+		filtered_file=filtered_file+str(f)
+		filtered_file=filtered_file+".txt"
+		f1=open(filtered_file,"w")
+		for i in lem_list:
+			f1.write(i)
+			f1.write("\n")
+		
 
 		print("Calculating Coverage:")
 		coverage(lem_list)
