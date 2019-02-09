@@ -51,6 +51,7 @@ def remove_doubles(delimeter1,delimeter2,words):
 	return words1
 
 def remove_punctuation(words1):
+	ignore_list=[".Mr",".Jr",".Phd"," Mr"," Jr","Phd"]
 	print("Processing Punctuations")
 	flag=0
 	words2=[]
@@ -58,14 +59,21 @@ def remove_punctuation(words1):
 		if(i!=''):
 			index=i.find('.')
 			if(index!=-1):
-				if(i[index-1].isdigit() and i[index+1].isdigit()):
-					flag=0
-				else:
-					flag=1
-					words2.append(i[0:index])
-					words2.append(i[index:index+1])
-					if(index+1 != len(i)):
-						words2.append(i[index+1:])
+				if(index+1!=len(i)):
+					if(i[index-1].isdigit() and i[index+1].isdigit()):
+						flag=0
+					elif(i[index-1].isupper()):
+						flag=0
+					elif(i[index-3:index] in ignore_list):
+						flag=0	
+					elif(i[0].isupper()):
+						flag=0
+					else:
+						flag=1
+						words2.append(i[0:index])
+						words2.append(i[index:index+1])
+						if(index+1 != len(i)):
+							words2.append(i[index+1:])
 			index=i.find(',')
 			if(flag==0 and index!=-1):
 				temp=""
@@ -99,7 +107,49 @@ def remove_punctuation(words1):
 				words2.append(i[0:index])
 				words2.append(i[index:index+1])
 				if(index+1 != len(i)):
-					words2.append(i[index+1:])			
+					words2.append(i[index+1:])
+			index=i.find('"')
+			if(flag==0 and index!=-1):
+				if(index==0):
+					flag=1
+					words2.append(i[0])
+					index1=i.find('"',1)
+					if(index1!=-1):
+						words2.append(i[1:len(i)])
+						words2.append(i[index])
+						if(index!=len(i)):
+							words2.append(i[index+1:])						
+					else:
+						words2.append(i[1:len(i)])
+
+		
+				else:
+					flag=1
+					words2.append(i[0:index-1])
+					words2.append(i[index])
+					if(index!=len(i)):
+						words2.append(i[index+1:])
+			index=i.find("'")
+			if(flag==0 and index!=-1):
+				if(index==0):
+					flag=1
+					words2.append(i[0])
+					index1=i.find("'",1)
+					if(index1!=-1):
+						words2.append(i[1:len(i)])
+						words2.append(i[index])
+						if(index!=len(i)):
+							words2.append(i[index+1:])						
+					else:
+						words2.append(i[1:len(i)])
+
+		
+				else:
+					flag=1
+					words2.append(i[0:index-1])
+					words2.append(i[index])
+					if(index!=len(i)):
+						words2.append(i[index+1:])
 			
 			if(flag==0):
 				words2.append(i)
@@ -217,7 +267,7 @@ def remove_punctuations(l):
 
 if __name__ == "__main__":
 	#files = ["demo1.txt"]
-	files = ["demo2.txt"]
+	files = ["demo1.txt"]
 	for f in files:
 		print("\n\n*********************************************************************************")
 		print("Using Corpus:",f)
