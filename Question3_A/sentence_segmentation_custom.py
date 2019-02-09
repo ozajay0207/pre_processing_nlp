@@ -19,37 +19,41 @@ def custom_sentence_segmentation(para):
 				index=para.find('.',start)
 				continue
 
-		if(para[index-1].isupper()):	
-			
+		if(para[index-1].isupper()):			
 			flag=1
 			temp=temp+para[start:index+1]		
 			start=index+1
 			index=para.find('.',start)
 			continue
-		if(para[index-1].islower()):
-				
+		if(para[index-1].islower()):				
 			temp1=para[index-3:index]
-			print(temp1)
 			if(temp1 in ignore_list):
 				flag=1
 				temp=temp+para[start:index+1]		
 				start=index+1
 				index=para.find('.',start)
-				continue
-			else:
-				if(flag==1):
-					temp=temp+para[start:index+1]
-					sent.append(temp)
-					temp=""
-					temp1=""
-					flag=0			
+				continue	
+			elif(index+1!=len(para)):
+				if(para[index+1]==" " and para[index+2].isupper()==False):				
+					flag=1
+					temp=temp+para[start:index+1]		
 					start=index+1
 					index=para.find('.',start)
-					continue
+					continue	
+				else:
+					if(flag==1):
+						temp=temp+para[start:index+1]
+						sent.append(temp)
+						temp=""
+						temp1=""
+						flag=0			
+						start=index+1
+						index=para.find('.',start)
+						continue
 
-				sent.append(para[start:index+1])	
-				start=index+1
-				index=para.find('.',start)
+					sent.append(para[start:index+1])	
+					start=index+1
+					index=para.find('.',start)
 		else:
 			if(flag==1):
 				temp=temp+para[start:index+1]
@@ -107,7 +111,7 @@ def custom_sentence_segmentation(para):
 
 ############################################### MAIN PROGRAM ###########################################
 
-file = open("demo1.txt","r")
+file = open("xaa","r")
 para=""
 for i in file.read():
     para = para + i
