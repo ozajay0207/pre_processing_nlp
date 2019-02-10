@@ -1,6 +1,7 @@
 import re
 
 def custom_sentence_segmentation(para):
+	print("Performing Sentence Segmentation...")
 #	sent = re.split('\.|\?|\!', para)
 	ignore_list=[".Mr",".Jr",".Phd"," Mr"," Jr","Phd"]
 	sent=[]
@@ -100,23 +101,38 @@ def custom_sentence_segmentation(para):
 		else:
 			sent2.append(i)
 
-
-	file1 = open("sentence_segmentation.txt","w")
-	for i in sent2:
-
-		i=i.strip()
-
-		file1.write(i)
-		file1.write('\n')
+	return sent2
 
 ############################################### MAIN PROGRAM ###########################################
 
-file = open("xaa","r")
-para=""
-for i in file.read():
-    para = para + i
-  
-custom_sentence_segmentation(para)
+sent2=[]
+if __name__ == "__main__":
+	#files = ["demo1.txt"]
+	files = ["xaa","xab","xac","xad"]
+	for f in files:
+		print("\n\n*********************************************************************************")
+		print("Using Corpus:",f)	
+		file = open(f,"r")
+		para=""
+		for i in file.read():
+		    para = para + i
+		  
+		sent1=custom_sentence_segmentation(para)
+		sent2.extend(sent1)
+
+	print(len(sent2))
+	
+	file_name = "sentence_segmentation_main"
+	#file_name = file_name + f
+	file_name = file_name + ".txt"
+	print("Writing to file...")
+	file1 = open(file_name,"w")
+	for i in sent2:
+		if(i!=""):
+			i=i.strip()
+			file1.write(i)
+			file1.write('\n')
+	
 
 
 

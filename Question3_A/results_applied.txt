@@ -1,0 +1,162 @@
+*********************************************************************************
+Using Corpus: xaa
+Tokenizing...
+Processing Doubles: ( )
+Processing Doubles: { }
+Processing Doubles: [ ]
+Processing Punctuations
+writing to file
+Removing Stop Words...
+Removing Punctuations...
+Calculating Coverage:
+Forming Unigrams of tokens...
+	Total Frequency Count:  2692525
+	Total number of Unigrams: 196132
+	Unigrams to cover 90% Corpus: 33447
+Forming Bigrams of tokens...
+	Total Frequency Count:  2692524
+	Total number of Bigrams: 1519841
+	Bigrams to cover 80% Corpus: 981337
+Forming Trigrams of tokens...
+	Total Frequency Count:  2692523
+	Total number of Trigrams: 1983322
+	Trigrams to cover 70% Corpus: 1175566
+
+*********************************************************************************
+Performing Lemmatization
+Calculating Coverage:
+Forming Unigrams of tokens...
+	Total Frequency Count:  2692525
+	Total number of Unigrams: 189763
+	Unigrams to cover 90% Corpus: 29924
+Forming Bigrams of tokens...
+	Total Frequency Count:  2692524
+	Total number of Bigrams: 1492302
+	Bigrams to cover 80% Corpus: 953798
+Forming Trigrams of tokens...
+	Total Frequency Count:  2692523
+	Total number of Trigrams: 1980136
+	Trigrams to cover 70% Corpus: 1172380
+
+
+*********************************************************************************
+Using Corpus: xab
+Tokenizing...
+Processing Doubles: ( )
+Processing Doubles: { }
+Processing Doubles: [ ]
+Processing Punctuations
+writing to file
+Removing Stop Words...
+Removing Punctuations...
+Calculating Coverage:
+Forming Unigrams of tokens...
+	Total Frequency Count:  2653550
+	Total number of Unigrams: 221586
+	Unigrams to cover 90% Corpus: 45557
+Forming Bigrams of tokens...
+	Total Frequency Count:  2653549
+	Total number of Bigrams: 1995267
+	Bigrams to cover 80% Corpus: 1464558
+Forming Trigrams of tokens...
+	Total Frequency Count:  2653548
+	Total number of Trigrams: 2553239
+	Trigrams to cover 70% Corpus: 1757175
+
+*********************************************************************************
+Performing Lemmatization
+Calculating Coverage:
+Forming Unigrams of tokens...
+	Total Frequency Count:  2653550
+	Total number of Unigrams: 214053
+	Unigrams to cover 90% Corpus: 40958
+Forming Bigrams of tokens...
+	Total Frequency Count:  2653549
+	Total number of Bigrams: 1952583
+	Bigrams to cover 80% Corpus: 1421874
+Forming Trigrams of tokens...
+	Total Frequency Count:  2653548
+	Total number of Trigrams: 2549186
+	Trigrams to cover 70% Corpus: 1753122
+
+
+*********************************************************************************
+Using Corpus: xac
+Tokenizing...
+Processing Doubles: ( )
+Processing Doubles: { }
+Processing Doubles: [ ]
+Processing Punctuations
+writing to file
+Removing Stop Words...
+Removing Punctuations...
+Calculating Coverage:
+Forming Unigrams of tokens...
+	Total Frequency Count:  2617971
+	Total number of Unigrams: 221625
+	Unigrams to cover 90% Corpus: 46096
+Forming Bigrams of tokens...
+	Total Frequency Count:  2617970
+	Total number of Bigrams: 1992953
+	Bigrams to cover 80% Corpus: 1469359
+Forming Trigrams of tokens...
+	Total Frequency Count:  2617969
+	Total number of Trigrams: 2520949
+	Trigrams to cover 70% Corpus: 1735559
+
+*********************************************************************************
+Performing Lemmatization
+Calculating Coverage:
+Forming Unigrams of tokens...
+	Total Frequency Count:  2617971
+	Total number of Unigrams: 213850
+	Unigrams to cover 90% Corpus: 41333
+Forming Bigrams of tokens...
+	Total Frequency Count:  2617970
+	Total number of Bigrams: 1947391
+	Bigrams to cover 80% Corpus: 1423797
+Forming Trigrams of tokens...
+	Total Frequency Count:  2617969
+	Total number of Trigrams: 2516836
+	Trigrams to cover 70% Corpus: 1731446
+
+
+*********************************************************************************
+Using Corpus: xad
+Tokenizing...
+Processing Doubles: ( )
+Processing Doubles: { }
+Processing Doubles: [ ]
+Processing Punctuations
+writing to file
+Removing Stop Words...
+Removing Punctuations...
+Calculating Coverage:
+Forming Unigrams of tokens...
+	Total Frequency Count:  2442810
+	Total number of Unigrams: 212236
+	Unigrams to cover 90% Corpus: 45387
+Forming Bigrams of tokens...
+	Total Frequency Count:  2442809
+	Total number of Bigrams: 1871094
+	Bigrams to cover 80% Corpus: 1382533
+Forming Trigrams of tokens...
+	Total Frequency Count:  2442808
+	Total number of Trigrams: 2355489
+	Trigrams to cover 70% Corpus: 1622647
+
+*********************************************************************************
+Performing Lemmatization
+Calculating Coverage:
+Forming Unigrams of tokens...
+	Total Frequency Count:  2442810
+	Total number of Unigrams: 204699
+	Unigrams to cover 90% Corpus: 40575
+Forming Bigrams of tokens...
+	Total Frequency Count:  2442809
+	Total number of Bigrams: 1831170
+	Bigrams to cover 80% Corpus: 1342609
+Forming Trigrams of tokens...
+	Total Frequency Count:  2442808
+	Total number of Trigrams: 2352000
+

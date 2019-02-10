@@ -1,8 +1,8 @@
 from nltk.tokenize import sent_tokenize,word_tokenize
 import nltk
 
-f = open("demo2.txt", "r")
-f1 = open("word_tokenize_nltk.txt", "a")
+f = open("xaa", "r")
+f1 = open("word_tokenize_nltk.txt", "w")
 
 for i in word_tokenize(f.read()):
 	f1.write(i)

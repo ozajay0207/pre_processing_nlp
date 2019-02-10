@@ -8,6 +8,7 @@ from nltk import ngrams
 import nltk
 import matplotlib.pyplot as plt
 
+#REMOVES TOKENS WHICH COMES IN PAIRS EXAMPLE : ALL TYPES OF BRACKETS
 def remove_doubles(delimeter1,delimeter2,words):
 	print("Processing Doubles:",delimeter1,delimeter2)	
 	words1=[]
@@ -115,20 +116,27 @@ def remove_punctuation(words1):
 					words2.append(i[0])
 					index1=i.find('"',1)
 					if(index1!=-1):
-						words2.append(i[1:len(i)])
-						words2.append(i[index])
-						if(index!=len(i)):
-							words2.append(i[index+1:])						
+						words2.append(i[1:index1])
+						words2.append(i[index1])
+						if(index1!=len(i)):
+							words2.append(i[index1+1:])						
 					else:
 						words2.append(i[1:len(i)])
 
 		
 				else:
 					flag=1
-					words2.append(i[0:index-1])
+					words2.append(i[0:index])
 					words2.append(i[index])
-					if(index!=len(i)):
+					index1=i.find('"',index)
+					if(index1!=-1):
+						words2.append(i[index+1:index1])
+						words2.append(i[index1])
+						if(index1!=len(i)):
+							words2.append(i[index1+1:])						
+					else:
 						words2.append(i[index+1:])
+
 			index=i.find("'")
 			if(flag==0 and index!=-1):
 				if(index==0):
@@ -136,20 +144,16 @@ def remove_punctuation(words1):
 					words2.append(i[0])
 					index1=i.find("'",1)
 					if(index1!=-1):
-						words2.append(i[1:len(i)])
-						words2.append(i[index])
-						if(index!=len(i)):
+						words2.append(i[1:index1])
+						words2.append(i[index1])
+						if(index1!=len(i)):
 							words2.append(i[index+1:])						
 					else:
 						words2.append(i[1:len(i)])
 
 		
 				else:
-					flag=1
-					words2.append(i[0:index-1])
-					words2.append(i[index])
-					if(index!=len(i)):
-						words2.append(i[index+1:])
+					flag=0
 			
 			if(flag==0):
 				words2.append(i)
@@ -157,29 +161,22 @@ def remove_punctuation(words1):
 	return words2
 
 def custom_word_tokenize(para):
-	words = re.split(' |\n',para)
-
-	file1 = open('word_tokenize.txt',"w")
-
-
-	'''for i in words:
-		if(i == ''):
-			words.remove(i)
-	'''
+	words = re.split(' |\n',para)	
 	
-	words1 = remove_doubles('(',')',words)
+	'''words1 = remove_doubles('(',')',words)
 	words1 = remove_doubles('{','}',words1)
-	words1 = remove_doubles('[',']',words1)	
-	print("here")
+	words1 = remove_doubles('[',']',words1)		
 	words1 = remove_punctuation(words1)		
 		
-
+	
+	file1 = open('word_tokenize.txt',"w")
 	print("writing to file")
 	for i in words1:
 		file1.write(i)
-		file1.write('\n')
-	return words1
-
+		file1.write('\n')'''
+	return words
+	
+	
 ############################################### QUESTION 2 PROGRAM ###########################################
 
 def ngram_coverage(l1,ngram_type,percent):
@@ -267,13 +264,11 @@ def remove_punctuations(l):
 
 if __name__ == "__main__":
 	#files = ["demo1.txt"]
-	files = ["demo1.txt"]
+	files = ["xaa","xab","xac","xad"]
 	for f in files:
 		print("\n\n*********************************************************************************")
 		print("Using Corpus:",f)
 		file = open(f, "r")
-
-
 
 		print("Tokenizing...")
 		para=""
@@ -284,23 +279,22 @@ if __name__ == "__main__":
 		word_tokenized_list=custom_word_tokenize(para)
 
 
+
+
 		print("Removing Stop Words...")		
 		word_tokenized_list = remove_stop_words(word_tokenized_list)
 		print("Removing Punctuations...")		
 		word_tokenized_list = remove_punctuations(word_tokenized_list)
-
 		print("Calculating Coverage:")
 		coverage(word_tokenized_list)
-		
-
-		########################################################################################	
+			
+		############################################################################################	
 		print("\n*********************************************************************************")
 
 		print("Performing Lemmatization")
 		#CREATING LEMMATIZER REFERENCE
 		lem = WordNetLemmatizer()
 		lem_list = []
-
 		#PERFORMING LEMMATIZATION
 		for i in word_tokenized_list:
 			lem_list.append(lem.lemmatize(i))		
